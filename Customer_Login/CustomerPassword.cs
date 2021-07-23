@@ -12,8 +12,8 @@ namespace Customer_Login
         private string password;
         private int incorrectPasswordCount;
 
-        public string Surname { get => surname;}
-        public string Password { get => password;}
+        public string Surname { get => surname; set => surname = value; }
+        public string Password { get => password; set => password = value; }
         public int IncorrectPasswordCount { get => incorrectPasswordCount; set => incorrectPasswordCount = value; }
     }
 }

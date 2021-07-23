@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Diagnostics;
 
 namespace Customer_Login
 {
@@ -91,5 +93,21 @@ namespace Customer_Login
         }
         //End application should user close window with 'x' in corner
         private void frmLogIn_FormClosed(object sender, FormClosedEventArgs e) => Application.Exit();
+
+        private void mnuOpenHelp_Click(object sender, EventArgs e)
+        {
+            string helpFile = "Help.txt";
+
+            if (File.Exists(helpFile))
+            {
+                Process.Start(helpFile);
+            } else
+            {
+                MessageBox.Show("It appears the help file is missing. Please call 1800 555 999 and we will assist", "FILE ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+
+
+        }
     }
 }

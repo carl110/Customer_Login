@@ -40,7 +40,7 @@ namespace Customer_Login
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS UI Gothic", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Maroon;
-            this.label3.Location = new System.Drawing.Point(149, 25);
+            this.label3.Location = new System.Drawing.Point(149, 37);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(412, 97);
             this.label3.TabIndex = 6;
@@ -49,9 +49,9 @@ namespace Customer_Login
             // imgMoney
             // 
             this.imgMoney.Image = ((System.Drawing.Image)(resources.GetObject("imgMoney.Image")));
-            this.imgMoney.Location = new System.Drawing.Point(69, 116);
+            this.imgMoney.Location = new System.Drawing.Point(69, 123);
             this.imgMoney.Name = "imgMoney";
-            this.imgMoney.Size = new System.Drawing.Size(656, 330);
+            this.imgMoney.Size = new System.Drawing.Size(656, 323);
             this.imgMoney.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgMoney.TabIndex = 7;
             this.imgMoney.TabStop = false;
@@ -61,7 +61,7 @@ namespace Customer_Login
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(790, 456);
             this.Controls.Add(this.imgMoney);
             this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

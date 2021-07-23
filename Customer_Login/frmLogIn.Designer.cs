@@ -38,6 +38,10 @@ namespace Customer_Login
             this.btnLogin = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuOpenHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -81,7 +85,7 @@ namespace Customer_Login
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS UI Gothic", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Maroon;
-            this.label3.Location = new System.Drawing.Point(149, 25);
+            this.label3.Location = new System.Drawing.Point(149, 37);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(412, 97);
             this.label3.TabIndex = 5;
@@ -111,6 +115,33 @@ namespace Customer_Login
     "you have forgotten your password please can Bank Ltd Customer Service on 1800 55" +
     "5 999";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuHelp});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 33);
+            this.menuStrip1.TabIndex = 8;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // mnuHelp
+            // 
+            this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuOpenHelp});
+            this.mnuHelp.Name = "mnuHelp";
+            this.mnuHelp.Size = new System.Drawing.Size(65, 29);
+            this.mnuHelp.Text = "Help";
+            // 
+            // mnuOpenHelp
+            // 
+            this.mnuOpenHelp.Name = "mnuOpenHelp";
+            this.mnuOpenHelp.Size = new System.Drawing.Size(270, 34);
+            this.mnuOpenHelp.Text = "Open Help ALT + &H";
+            this.mnuOpenHelp.Click += new System.EventHandler(this.mnuOpenHelp_Click);
+            // 
             // frmLogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -124,9 +155,13 @@ namespace Customer_Login
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmLogIn";
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLogIn_FormClosed);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,6 +177,9 @@ namespace Customer_Login
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem mnuHelp;
+        private System.Windows.Forms.ToolStripMenuItem mnuOpenHelp;
     }
 }
 
