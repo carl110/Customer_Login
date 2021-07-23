@@ -11,7 +11,7 @@ namespace Customer_Login
         private double customerAccountBalance;
         private string customerSurname;
 
-        public double CustomerAccountBalance { get => customerAccountBalance; set => customerAccountBalance = value; }
-        public string CustomerSurname { get => customerSurname; set => customerSurname = value; }
+        public double CustomerAccountBalance { get => customerAccountBalance;}
+        public string CustomerSurname { get => customerSurname; }
     }
 }

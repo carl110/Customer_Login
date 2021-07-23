@@ -12,7 +12,6 @@ namespace Customer_Login
 {
     public partial class SplashScreen : Form
     {
-        Bitmap moneyImage;
         public SplashScreen()
         {
             InitializeComponent();

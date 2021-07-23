@@ -31,16 +31,17 @@ namespace Customer_Login
                 CustomerPassword newCustPassword = new CustomerPassword();
                 newCustPassword.Surname = myArray[0].ToLower();
                 newCustPassword.Password = myArray[1];
+                newCustPassword.IncorrectPasswordCount = Convert.ToInt32(myArray[2]);
                 passwordList.Add(newCustPassword);
             }
         }
-        public static void saveFile(List<CustomerPassword> passwordList)
+        public static void savePassworList(List<CustomerPassword> passwordList)
         {
             using (TextWriter tw = new StreamWriter(passwordFileLocation))
             {
                 foreach (var account in passwordList)
                 {
-                    tw.WriteLine(account.Surname + "," + account.Password);
+                    tw.WriteLine(account.Surname + "," + account.Password + "," + account.IncorrectPasswordCount);
                 }
             }
         }
