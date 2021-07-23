@@ -8,12 +8,8 @@ namespace Customer_Login
 {
     public class CustomerPassword
     {
-        private string surname;
-        private string password;
-        private int incorrectPasswordCount;
-
-        public string Surname { get => surname; set => surname = value; }
-        public string Password { get => password; set => password = value; }
-        public int IncorrectPasswordCount { get => incorrectPasswordCount; set => incorrectPasswordCount = value; }
+        public string surname { get; set; }
+        public string password { get; set; }
+        public int incorrectPasswordCount { get; set; }
     }
 }

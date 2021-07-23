@@ -22,16 +22,15 @@ namespace Customer_Login
             InitializeComponent();
             setUpLabels();
         }
-
         private void setUpLabels()
         {   //set name label to title text of username
             lblName.Text = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(userName.ToLower());
             //Loop list of balances
             for (int i = 0; i < balanceList.Count; i++)
             {   //if username is same as name on list
-                if (balanceList[i].CustomerSurname == userName)
+                if (balanceList[i].customerSurname == userName)
                 {   //set balance label to balance from txt fil in format of £0.00
-                    lblBalance.Text = String.Format(new CultureInfo("en-GB"), "{0:C}", balanceList[i].CustomerAccountBalance, 2);
+                    lblBalance.Text = String.Format(new CultureInfo("en-GB"), "{0:C}", balanceList[i].customerAccountBalance, 2);
                 }
             }
         }
