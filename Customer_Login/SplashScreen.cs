@@ -45,7 +45,7 @@ namespace Customer_Login
             images = Directory.GetFiles(@"Money");
             //Set new timer class with interval of 0.5 seconds
             Timer T = new Timer();
-            T.Interval = 500;
+            T.Interval = 100;
             T.Tick += new EventHandler(imageRunThrough);
             T.Start();
         }
@@ -55,7 +55,5 @@ namespace Customer_Login
             //Go back to start when picture list exhausted
             if (counter >= images.Length) counter = 0;
         }
-
-
     }
 }

@@ -49,9 +49,9 @@ namespace Customer_Login
             // imgMoney
             // 
             this.imgMoney.Image = ((System.Drawing.Image)(resources.GetObject("imgMoney.Image")));
-            this.imgMoney.Location = new System.Drawing.Point(69, 127);
+            this.imgMoney.Location = new System.Drawing.Point(69, 137);
             this.imgMoney.Name = "imgMoney";
-            this.imgMoney.Size = new System.Drawing.Size(656, 323);
+            this.imgMoney.Size = new System.Drawing.Size(656, 313);
             this.imgMoney.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgMoney.TabIndex = 7;
             this.imgMoney.TabStop = false;
