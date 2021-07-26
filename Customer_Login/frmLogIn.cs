@@ -29,12 +29,12 @@ namespace Customer_Login
         private bool checkIfNotEmpty()
         {
             if (txtUserName.TextLength == 0)
-            {
+            {   //If username empty
                 MessageBox.Show("You must enter a Username to access your account. Please complete both to proceed", "NO USERNAME ENTERED", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtUserName.Select();
                 return false;
             } else if (txtPassword.TextLength == 0)
-            {
+            {   //if password empty
                 MessageBox.Show("You must enter a Password to access your account. Please complete both to proceed", "NO PASSWORD ENTERED", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtPassword.Select();
                 return false;
@@ -46,20 +46,20 @@ namespace Customer_Login
             if (checkIfNotEmpty())
             {//Set bool holder for username found
                 bool nameFound = false;
-                //set username to user input to alow sharing with next form
-                userName = txtUserName.Text.ToLower();
+                //set username to user input to alow sharing with next form - setting to lower case and removing all whitespaces
+                userName = txtUserName.Text.Trim().ToLower();
                 //Loop through list
                 for (int i = 0; i < passwordList.Count; i++)
                 {   //if username input is same as a name held on text file (not case sensitive)
-                    if (passwordList[i].surname == userName)
+                    if (passwordList[i].UserName == userName)
                     //check login attempts
                     {
-                        if (passwordList[i].incorrectPasswordCount < 3)
+                        if (passwordList[i].IncorrectPasswordCount < 3)
                         {
                             //if password entered matches password on text file (case sensitive)
-                            if (passwordList[i].password == txtPassword.Text)
+                            if (passwordList[i].Password == txtPassword.Text)
                             {   //Reset login attempts
-                                passwordList[i].incorrectPasswordCount = 0;
+                                passwordList[i].IncorrectPasswordCount = 0;
                                 FileHandler.savePassworList(passwordList);
                                 //Open balance screen and hide this
                                 frmBalanceScreen balanceScreen = new frmBalanceScreen();
@@ -68,16 +68,16 @@ namespace Customer_Login
                             }
                             else
                             {   //UUpdate incorrect password attemt
-                                passwordList[i].incorrectPasswordCount += 1;
+                                passwordList[i].IncorrectPasswordCount += 1;
                                 FileHandler.savePassworList(passwordList);
                                 //Show message to advise password not correct & clear password field
-                                if (passwordList[i].incorrectPasswordCount > 2)
+                                if (passwordList[i].IncorrectPasswordCount > 2)
                                 {   //If third worng atttempt
                                     MessageBox.Show($"Your account is now locked. Please call 1800 555 999 for assistance.", "ACCOUNT LOCKED", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                                 }
                                 else
                                 {
-                                    MessageBox.Show($"The password you have entered is incorrect, please remember the password is case sensative. You have {(3 - passwordList[i].incorrectPasswordCount)} attempt(s) before your account is locked",
+                                    MessageBox.Show($"The password you have entered is incorrect, please remember the password is case sensative. You have {(3 - passwordList[i].IncorrectPasswordCount)} attempt(s) before your account is locked",
                                                     "Incorrect Password", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
                                 //Highlight password text

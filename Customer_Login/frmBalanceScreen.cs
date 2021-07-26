@@ -28,9 +28,9 @@ namespace Customer_Login
             //Loop list of balances
             for (int i = 0; i < balanceList.Count; i++)
             {   //if username is same as name on list
-                if (balanceList[i].customerSurname == userName)
+                if (balanceList[i].CustomerSurname == userName)
                 {   //set balance label to balance from txt fil in format of £0.00
-                    lblBalance.Text = String.Format(new CultureInfo("en-GB"), "{0:C}", balanceList[i].customerAccountBalance, 2);
+                    lblBalance.Text = String.Format(new CultureInfo("en-GB"), "{0:C}", balanceList[i].CustomerAccountBalance, 2);
                 }
             }
         }

@@ -49,7 +49,7 @@ namespace Customer_Login
             // imgMoney
             // 
             this.imgMoney.Image = ((System.Drawing.Image)(resources.GetObject("imgMoney.Image")));
-            this.imgMoney.Location = new System.Drawing.Point(69, 123);
+            this.imgMoney.Location = new System.Drawing.Point(69, 127);
             this.imgMoney.Name = "imgMoney";
             this.imgMoney.Size = new System.Drawing.Size(656, 323);
             this.imgMoney.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -68,6 +68,7 @@ namespace Customer_Login
             this.Name = "SplashScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SplashScreen";
+            this.Load += new System.EventHandler(this.SplashScreen_Load);
             this.Shown += new System.EventHandler(this.SplashScreen_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.imgMoney)).EndInit();
             this.ResumeLayout(false);

@@ -16,8 +16,8 @@ namespace Customer_Login
             {
                 myArray = line.Trim().Split(',');
                 CustomerAccount newCustAccount = new CustomerAccount();
-                newCustAccount.customerSurname = myArray[0].ToLower();
-                newCustAccount.customerAccountBalance = Convert.ToDouble(myArray[1]);
+                newCustAccount.CustomerSurname = myArray[0].ToLower();
+                newCustAccount.CustomerAccountBalance = Convert.ToDouble(myArray[1]);
                 balanceList.Add(newCustAccount);
             }
         }
@@ -29,9 +29,9 @@ namespace Customer_Login
             {
                 myArray = line.Trim().Split(',');
                 CustomerPassword newCustPassword = new CustomerPassword();
-                newCustPassword.surname = myArray[0].ToLower();
-                newCustPassword.password = myArray[1];
-                newCustPassword.incorrectPasswordCount = Convert.ToInt32(myArray[2]);
+                newCustPassword.UserName = myArray[0].ToLower();
+                newCustPassword.Password = myArray[1];
+                newCustPassword.IncorrectPasswordCount = Convert.ToInt32(myArray[2]);
                 passwordList.Add(newCustPassword);
             }
         }
@@ -41,7 +41,7 @@ namespace Customer_Login
             {
                 foreach (var account in passwordList)
                 {
-                    tw.WriteLine(account.surname + "," + account.password + "," + account.incorrectPasswordCount);
+                    tw.WriteLine(account.UserName + "," + account.Password + "," + account.IncorrectPasswordCount);
                 }
             }
         }
