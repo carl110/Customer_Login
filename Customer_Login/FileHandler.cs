@@ -37,7 +37,7 @@ namespace Customer_Login
         }
         public static void savePassworList(List<CustomerPassword> passwordList)
         {
-            using (TextWriter tw = new StreamWriter(passwordFileLocation))
+            using (TextWriter tw = new StreamWriter(passwordFileLocation, false))
             {
                 foreach (var account in passwordList)
                 {

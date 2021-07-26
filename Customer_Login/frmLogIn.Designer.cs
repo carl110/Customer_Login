@@ -138,7 +138,7 @@ namespace Customer_Login
             // mnuOpenHelp
             // 
             this.mnuOpenHelp.Name = "mnuOpenHelp";
-            this.mnuOpenHelp.Size = new System.Drawing.Size(270, 34);
+            this.mnuOpenHelp.Size = new System.Drawing.Size(268, 34);
             this.mnuOpenHelp.Text = "Open Help ALT + &H";
             this.mnuOpenHelp.Click += new System.EventHandler(this.mnuOpenHelp_Click);
             // 

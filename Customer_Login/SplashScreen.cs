@@ -22,8 +22,7 @@ namespace Customer_Login
         //Use timer class
         Timer tmr;
         private void SplashScreen_Shown(object sender, EventArgs e)
-        {
-            //set tmr as timer call
+        {    //set tmr as timer call
             tmr = new Timer();
             //set time interval 3 sec
             tmr.Interval = 3000;
@@ -42,19 +41,21 @@ namespace Customer_Login
         }
         //Rotate pictures on start
         private void SplashScreen_Load(object sender, EventArgs e)
-        {   //Locate file containing images
+        {//Locate file containing images
             images = Directory.GetFiles(@"Money");
             //Set new timer class with interval of 0.5 seconds
             Timer T = new Timer();
             T.Interval = 500;
-            T.Tick += new EventHandler(PlayTime);
+            T.Tick += new EventHandler(imageRunThrough);
             T.Start();
         }
-        void PlayTime(object sender, EventArgs e)
+        private void imageRunThrough(object sender, EventArgs e)
         {   //run through pictures to display
             imgMoney.ImageLocation = images[counter++];
             //Go back to start when picture list exhausted
             if (counter >= images.Length) counter = 0;
         }
+
+
     }
 }
