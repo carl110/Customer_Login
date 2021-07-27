@@ -20,6 +20,7 @@ namespace Customer_Login
         {   //Get list of balances from txt files
             FileHandler.getBalanceList(balanceList);
             InitializeComponent();
+            CenterToParent();
             setUpLabels();
         }
         private void setUpLabels()
@@ -41,8 +42,19 @@ namespace Customer_Login
             login.Show();
         }
         //Close program if exit button clicked
-        private void btnExit_Click(object sender, EventArgs e) => Application.Exit();
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            //Save updated incorrect passwprd count back to the txt file
+            FileHandler.savePassworList(frmLogIn.passwordList);
+            Application.Exit();
+        }
+
         //Close program if 'x' button in corner clicked
-        private void frmBalanceScreen_FormClosed(object sender, FormClosedEventArgs e) => Application.Exit();
+        private void frmBalanceScreen_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //Save updated incorrect passwprd count back to the txt file
+            FileHandler.savePassworList(frmLogIn.passwordList);
+            Application.Exit();
+        }
     }
 }

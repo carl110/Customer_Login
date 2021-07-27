@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Customer_Login
 {
@@ -17,14 +18,20 @@ namespace Customer_Login
         public static List<CustomerPassword> passwordList = new List<CustomerPassword>();
         public static string userName = "";
         public frmLogIn()
-        {
-            //Get list of passwords from txt file
-            FileHandler.getPasswordList(passwordList);
+        {   //Get list of passwords from txt file
+            loadInitialPasswordList();
             InitializeComponent();
             Text = "Bank Ltd - Login";
             CenterToScreen();
             //Set textfield to hide input of text in password field
             txtPassword.UseSystemPasswordChar = true;
+        }
+        private void loadInitialPasswordList()
+        {   //Only get new list if list is empty, such as first load
+            if (passwordList.Count == 0)
+            {
+                FileHandler.getPasswordList(passwordList);
+            }
         }
         private bool checkIfNotEmpty()
         {
@@ -33,7 +40,8 @@ namespace Customer_Login
                 MessageBox.Show("You must enter a Username to access your account. Please complete both to proceed", "NO USERNAME ENTERED", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtUserName.Select();
                 return false;
-            } else if (txtPassword.TextLength == 0)
+            }
+            else if (txtPassword.TextLength == 0)
             {   //if password empty
                 MessageBox.Show("You must enter a Password to access your account. Please complete both to proceed", "NO PASSWORD ENTERED", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtPassword.Select();
@@ -52,42 +60,40 @@ namespace Customer_Login
                 for (int i = 0; i < passwordList.Count; i++)
                 {   //if username input is same as a name held on text file (not case sensitive)
                     if (passwordList[i].UserName == userName)
-                    //check login attempts
-                    {
-                        if (passwordList[i].IncorrectPasswordCount < 3)
-                        {
-                            //if password entered matches password on text file (case sensitive)
+                    {   //check login attempts
+                        if (passwordList[i].IncorrectPasswordCount >= 3)
+                        {   //Account is locked
+                            MessageBox.Show("Your account has been locked due to too many failed login attempt. Please call 1800 555 999 for your account to be unlocked.", "ACCOUNT LOCKED", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {    //if password entered matches password on text file (case sensitive)
                             if (passwordList[i].Password == txtPassword.Text)
                             {   //Reset login attempts
                                 passwordList[i].IncorrectPasswordCount = 0;
-                                FileHandler.savePassworList(passwordList);
                                 //Open balance screen and hide this
                                 frmBalanceScreen balanceScreen = new frmBalanceScreen();
                                 this.Hide();
                                 balanceScreen.Show();
                             }
                             else
-                            {   //UUpdate incorrect password attemt
+                            {   //Update incorrect password attemt
                                 passwordList[i].IncorrectPasswordCount += 1;
-                                FileHandler.savePassworList(passwordList);
                                 //Show message to advise password not correct & clear password field
                                 if (passwordList[i].IncorrectPasswordCount > 2)
                                 {   //If third worng atttempt
-                                    MessageBox.Show($"Your account is now locked. Please call 1800 555 999 for assistance.", "ACCOUNT LOCKED", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                    MessageBox.Show($"Your account is now locked. Please call 1800 555 999 for assistance.",
+                                                    "ACCOUNT LOCKED", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                                 }
                                 else
                                 {
-                                    MessageBox.Show($"The password you have entered is incorrect, please remember the password is case sensative. You have {(3 - passwordList[i].IncorrectPasswordCount)} attempt(s) before your account is locked",
+                                    MessageBox.Show($"The password you have entered is incorrect, please remember the password is case sensative." +
+                                                    $" You have {(3 - passwordList[i].IncorrectPasswordCount)} attempt(s) before your account is locked",
                                                     "Incorrect Password", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
                                 //Highlight password text
                                 txtPassword.SelectAll();
                                 txtPassword.Focus();
                             }
-                        }
-                        else
-                        {   //Account is locked
-                            MessageBox.Show("Your account has been locked due to too many failed login attempt. Please call 1800 555 999 for your account to be unlocked.", "ACCOUNT LOCKED", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         //Set nameFound to true
                         nameFound = true;
@@ -106,7 +112,12 @@ namespace Customer_Login
             }
         }
         //End application should user close window with 'x' in corner
-        private void frmLogIn_FormClosed(object sender, FormClosedEventArgs e) => Application.Exit();
+        private void frmLogIn_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //Save updated incorrect passwprd count back to the txt file
+            FileHandler.savePassworList(passwordList);
+            Application.Exit();
+        }
         private void mnuOpenHelp_Click(object sender, EventArgs e)
         {
             string helpFile = "Help.txt";
@@ -114,7 +125,8 @@ namespace Customer_Login
             if (File.Exists(helpFile))
             {   //Open text file
                 Process.Start(helpFile);
-            } else
+            }
+            else
             {   //Show error message of file not found
                 MessageBox.Show("It appears the help file is missing. Please call 1800 555 999 and we will assist", "FILE ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
